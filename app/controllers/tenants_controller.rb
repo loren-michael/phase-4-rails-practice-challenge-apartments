@@ -3,12 +3,12 @@ class TenantsController < ApplicationController
 
   def index
     tenants = Tenant.all
-    render json: tenants, only: [:name, :age], include: [:apartment, :lease]
+    render json: tenants, only: [:name, :age], include: [:apartments, :leases]
   end
 
   def show
     tenant = find_tenant
-    render json: tenant, only: [:name, :age], include: [:apartment, :lease]
+    render json: tenant, only: [:name, :age], include: [:apartments, :leases]
   end
 
   def create
@@ -29,7 +29,7 @@ class TenantsController < ApplicationController
   def destroy
     tenant = find_tenant
     tenant.destroy
-    render json: { message: "This tenant has been deleted." }, status: :no_content
+    render json: { message: "This tenant has been deleted." }, status: :accepted
   end
 
   private

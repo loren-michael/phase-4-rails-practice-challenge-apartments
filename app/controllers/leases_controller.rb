@@ -11,7 +11,7 @@ class LeasesController < ApplicationController
   def destroy
     lease = find_lease
     lease.destroy
-    render json: { message: "This lease has been deleted." }, status: :no_content
+    render json: { message: "This lease has been deleted." }, status: :accepted
   end
 
   private
@@ -21,7 +21,7 @@ class LeasesController < ApplicationController
   end
 
   def lease_params
-    params.permit(:rent)
+    params.permit(:rent, :apartment_id, :tenant_id)
   end
 
   def lease_errors

@@ -29,7 +29,7 @@ class ApartmentsController < ApplicationController
   def destroy
     apartment = find_apartment
     apartment.destroy
-    render json: { message: "This apartment has been deleted." }, status: :no_content
+    render json: { message: "This apartment has been deleted." }, status: :accepted
   end
 
   private
@@ -40,7 +40,7 @@ class ApartmentsController < ApplicationController
 
   def apartment_params
     params.permit(:number)
-  en
+  end
 
   def apartment_errors
     render json: { errors: apartment.errors.full_messages }
